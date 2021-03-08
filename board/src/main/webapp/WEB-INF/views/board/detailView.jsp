@@ -8,8 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+  
     <h1>${board.nickname}님의 게시글</h1>
-     <table>
+     <table border="1">
      <tr>
      <td>작성자</td>
      <td>${board.nickname}</td>
@@ -33,7 +34,8 @@
      </table>
      <a href="<c:url value="/board/edit/${board.idx}"/>"><input type="button" value="수정"></a>
      <a href="<c:url value="/board/delete/${board.idx}"/>"><input type="button" value="삭제"></a>
-     <a href="<c:url value="/"/>">뒤로가기</a>
+     <br>
+     <a href="<c:url value="/"/>">메인으로 이동</a>
      
 </body>
 </html>

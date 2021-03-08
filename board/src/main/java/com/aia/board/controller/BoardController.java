@@ -1,4 +1,4 @@
-package com.aia.board;
+package com.aia.board.controller;
 
 import java.util.List;
 
@@ -34,11 +34,14 @@ public class BoardController {
 	// 게시판에 업로드
 	@PostMapping("/board/upload")
 	public String boardUpload(
-			UploadRequest request) {
+			UploadRequest request,
+			Model model) {
 		
-		uploadService.uploadService(request);
+		int result = uploadService.uploadService(request);
+		
+		model.addAttribute("result", result);
 				
-		return "index";
+		return "board/result";
 	}
 	
 	// 게시판 리스트 출력
@@ -72,9 +75,11 @@ public class BoardController {
 			Board board,
 			Model model) {
 				
-		editService.editBoard(idx, board);
+		int result = editService.editBoard(idx, board);
 		
-		return "index";
+		model.addAttribute("result", result);
+		
+		return "board/result";
 	}
 	
 	// 게시물 삭제
@@ -83,9 +88,11 @@ public class BoardController {
 			@PathVariable("idx") int idx,
 			Model model) {
 		
-		deleteService.deleteBoard(idx);
+		int result = deleteService.deleteBoard(idx);
 		
-		return "index";
+		model.addAttribute("result", result);
+		
+		return "board/result";
 	}
 	
 
